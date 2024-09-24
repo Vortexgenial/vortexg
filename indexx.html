@@ -57,3 +57,59 @@
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo Oscuro</title>
+    <style>
+        /* Modo claro por defecto */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Cambiar negritas a color negro en modo claro */
+        b {
+            color: black;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Cambiar negritas a color blanco en modo oscuro */
+        body.dark-mode b {
+            color: white;
+        }
+
+        /* Botón para alternar entre modos */
+        .toggle-button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modo Oscuro en HTML y CSS</h1>
+    <p>Este es un ejemplo de texto en <b>negritas</b>.</p>
+    <button class="toggle-button" onclick="toggleDarkMode()">Alternar Modo Oscuro</button>
+
+    <script>
+        // Función para alternar el modo oscuro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
