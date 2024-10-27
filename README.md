@@ -1,2 +1,2 @@
-# vortexg
+# vorttexgenial
 github page
