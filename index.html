@@ -143,6 +143,78 @@
         <div class="config-option">
             <label for="darkModeToggle">Modo oscuro:</label>
             <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+
+
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir Video con Marco Redondo</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f9fc;
+      font-family: Arial, sans-serif;
+    }
+
+    .upload-container {
+      text-align: center;
+    }
+
+    .video-container {
+      width: 300px;
+      height: 300px;
+      border: 5px solid #3498db; /* Color del marco */
+      border-radius: 50%; /* Hace el marco redondo */
+      overflow: hidden; /* Esconde los bordes sobrantes */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+      margin-top: 20px;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ajusta el video al contenedor */
+    }
+
+    input[type="file"] {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>Subir y Mostrar Video</h1>
+    <input type="file" id="videoInput" accept="video/*">
+    <div class="video-container" id="videoContainer">
+      <video id="videoPlayer" controls></video>
+    </div>
+  </div>
+
+  <script>
+    const videoInput = document.getElementById('videoInput');
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    videoInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+        videoPlayer.src = fileURL;
+      }
+    });
+  </script>
+</body>
+</html>
+    
+        
+        
         </div>
 
         <form action="vortex.html" method="post">
