@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>i Vortex genial👽</title>
+    <title>i Vorttex👽</title>
     <style>
         /* Estilos para el cuerpo en modo claro */
         body {
@@ -30,10 +30,10 @@
         }
 
         .config-panel {
-            display: center;
+            display: none;
             border: 1px solid #121212;
-            padding: 10px ;
-            border-radius: 10px;
+            padding: 20px ;
+            border-radius: 20px;
             background-color: #121212;
         }
 
@@ -42,23 +42,23 @@
         }
 
         .config-option {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         /* Foto de perfil redonda */
         #profile-pic {
             display: block;
             margin-top: 15px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border-radius: 70%;
             object-fit: cover;
         }
     </style>
 </head>
 <body>
 
-       <button class="config-button" onclick="toggleConfigPanel()"> ⚙️</button>
+    <button class="config-button" onclick="toggleConfigPanel()"> ⚙️</button>
 
     <div class="config-panel" id="configPanel">
         <div class="config-option">
@@ -106,10 +106,272 @@
 
 </body>
 </html>
-  
 
 
-            <!DOCTYPE html>
+
+nohy<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i Vorttex👽</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                
+                
+                <li><a href="index.html">i Vorttex👽</a></li>
+                
+                <li><a href="acerca.html">Vpodcast👽</a></li>
+                
+                <li><a href="vortex.html">Vortex👽</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            
+        
+                
+            
+                
+            <html lang="es">
+            
+            <head>
+            
+                <meta charset="UTF-8">
+            
+                <title>Iniciar Sesión</title>
+            
+            </head>
+            
+            <body>
+            
+                <h1>WELCOM a VORTTEX</h1>
+            
+                <form action="vortex.html" method="post">
+            
+                      
+                    <button type="submit">CERRAR SESION</button>
+            
+                </form>
+            
+                <c:if test="${not empty error}">
+            
+                    <p style="color:red;">(PARCER@)CLICK UNDER IN NAVE DEL ALIEN Vpodcast in Vivo</p>
+                    
+                </c:if>
+            
+            </body>
+            
+            </html>
+   
+
+  <!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contacto de WhatsApp</title>
+    
+     <!-- Incluye Font Awesome para los iconos -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        
+    body {
+            display: flex;
+        
+            justify-content: center;
+        
+            align-items: center;
+        
+            height: 101vh;
+        
+            width: 229vw;
+        
+            background-color: #282c34;
+        }
+
+        .icon {
+            font-size: 100px;
+            
+            color: #61dafb;
+            
+            cursor: pointer;
+            
+            transition: color 0.3s;
+        }
+
+        .icon:hover {
+            
+            color: #21a1f1;
+        }
+
+    </style>
+    
+</head>
+    
+<body>
+
+         <i class="fas fa-rocket icon" onclick="openWhatsApp()"></i>
+
+    <script>
+
+        function openWhatsApp() {
+
+            var phoneNumber = '3317739762'; // Reemplaza con el número de teléfono del contacto
+
+            var url = 'https://wa.me/' + phoneNumber;
+
+            window.open(url, '_blank');
+
+        }
+
+    </script>
+</style>
+</body>
+
+</html>
+            
+
+    
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>...</title>
+    <link rel="stylesheet" href="Styles.css">
+    
+    <style>
+              
+        body {
+
+              color: #270833;
+
+              text-decoration: none;
+
+              font-family: Arial, sans-serif;
+
+              margin: 10px;
+
+    </style>
+
+</head>
+
+<body>
+
+ 
+
+            
+
+       
+            
+
+            <button type="button" onclick="addToAlbum()">🔮</button>
+
+        </form>
+
+    </div>
+
+    <h2>Load Photos In i vortex & Screenshots And Save</h2>
+
+    <div class="album" id="album">
+
+        <!-- Aquí se agregarán las fotos y nombres -->
+
+    </div>
+
+    <script>
+
+        function addToAlbum() {
+
+            // Obtener el nombre de usuario
+
+            const username = document.getElementById('username').value;
+
+            // Obtener el archivo de la foto
+
+            const fileInput = document.getElementById('profile_picture');
+
+            const file = fileInput.files[0];
+
+            if (file && username) {
+
+                const reader = new FileReader();
+
+                // Crear un nuevo item para el álbum
+
+                reader.onload = function(e) {
+
+                    const album = document.getElementById('album');
+
+                    const newItem = document.createElement('div');
+
+                    newItem.classList.add('album-item');
+
+                    // Crear la imagen
+
+                    const img = document.createElement('img');
+
+                    img.src = e.target.result;
+
+                    // Crear el nombre de usuario
+
+                    const caption = document.createElement('p');
+
+                    caption.textContent = username;
+
+                    // Añadir la imagen y el nombre al item
+
+                    newItem.appendChild(img);
+
+                    newItem.appendChild(caption);
+
+                    // Añadir el nuevo item al álbum
+
+                    album.appendChild(newItem);
+
+                    // Limpiar el formulario
+
+                    document.getElementById('userForm').reset();
+
+                };
+
+                // Leer la imagen como un Data URL
+
+                reader.readAsDataURL(file);
+
+            } else {
+
+                alert('Por favor ingresa un nombre de usuario y selecciona una foto.');
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+      
+      
+                 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -175,44 +437,7 @@
   </script>
 </body>
 </html>
-    
-        
-        </div>
 
-        <form action="vortex.html" method="post">
-            
-                      
-        <button type="submit">Cerrar Secion 👽</button>
-            
-
-       </div>
-
-    <script>
-        // Mostrar/ocultar el panel de configuración
-        function toggleConfigPanel() {
-            const panel = document.getElementById('configPanel');
-            panel.classList.toggle('active');
-        }
-
-        // Cambiar entre modo oscuro y claro
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-
-        // Cargar la imagen de perfil seleccionada y mostrarla
-        function loadProfilePic(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const img = document.getElementById('profile-pic');
-                img.src = reader.result;
-                img.hidden = false; // Mostrar la imagen después de cargarla
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
-
-</body>
-</html>
 
 
 
