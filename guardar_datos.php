@@ -8,13 +8,13 @@ la linea refresh, le indica al navegador dentro de cuantos seguundos (en este ca
 $servername = "sql5.freesqldatabase.com";
 $username = "sql5751858";
 $password = "CUrU1KaUnQ";
-$dbname = "sql5751858";  
+$dbname = ""sql5751858";  
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 //captura de datos pasados desde vortex.html
 $nombre = $_POST["nombre"];
 $correo = $_POST["correo"];
 $telefono = $_POST["telefono"];
 //crear y ejecutar consulta php
-$query="INSERT INTO Vortexgs (nombre,correo,telefono) VALUES('".$nombre."','".$correo."','".$telefono."')";
+$query="INSERT INTO Vortexgs (Nmbre,Correo,Telefono) VALUES('".$Nombre."','".$Correo."','".$Telefono."')";
 $mysqli->query($query) or die($mysqli->error.__LINE__);
 ?>
