@@ -1,7 +1,7 @@
 <!--
-la linea refresh, le indica al navegador dentro de cuantos seguundos (en este caso cero que significa instantaneamente) se ira a tal url (en este caso index.html del mismo directorio)
+la linea refresh, le indica al navegador dentro de cuantos seguundos (en este caso cero que significa instantaneamente) se ira a tal url (en este caso Vortex.html del mismo directorio)
 !-->
-<meta http-equiv="refresh" content="0;url=index.html ">
+<meta http-equiv="refresh" content="0;url=Vortex.html ">
 
 <?php
 //Credenciales
