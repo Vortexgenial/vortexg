@@ -15,6 +15,6 @@ $nombre = $_POST["nombre"];
 $correo = $_POST["correo"];
 $telefono = $_POST["telefono"];
 //crear y ejecutar consulta php
-$query="INSERT INTO Usuariosg (nombre,correo,telefono) VALUES('".$nombre."','".$correo."','".$telefono."')";
+$query="INSERT INTO Vortexgs (nombre,correo,telefono) VALUES('".$nombre."','".$correo."','".$telefono."')";
 $mysqli->query($query) or die($mysqli->error.__LINE__);
 ?>
