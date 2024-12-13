@@ -11,10 +11,10 @@ $password = "CUrU1KaUnQ";
 $dbname = "sql5751858";  
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 //captura de datos pasados desde vortex.html
-$nombre = $_POST["nombre"];
-$correo = $_POST["correo"];
-$telefono = $_POST["telefono"];
+$nombre = $_POST["Nombre"];
+$correo = $_POST["Correo"];
+$telefono = $_POST["Telefono"];
 //crear y ejecutar consulta php
-$query="INSERT INTO Vortexgs (nombre,correo,telefono) VALUES('".$nombre."','".$correo."','".$telefono."')";
+$query="INSERT INTO Vortexx (Nombre,Correo,Telefono) VALUES('".$Nombre."','".$Correo."','".$Telefono."')";
 $mysqli->query($query) or die($mysqli->error.__LINE__);
 ?>
