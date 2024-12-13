@@ -6,9 +6,9 @@ la linea refresh, le indica al navegador dentro de cuantos seguundos (en este ca
 <?php
 //Credenciales
 $servername = "sql5.freesqldatabase.com";
-$username = "sql5723954";
-$password = "8bNKjjmTEj";
-$dbname = "sql5723954";  
+$username = "sql5751858";
+$password = "CUrU1KaUnQ";
+$dbname = "sql5751858 ";  
 $mysqli = new mysqli($servername, $username, $password, $dbname);
 //captura de datos pasados desde vortex.html
 $nombre = $_POST["nombre"];
