@@ -232,8 +232,7 @@ nohy<!DOCTYPE html>
 </html>
             
 
-    
-<!DOCTYPE html>
+    <!DOCTYPE html>
 
 <html lang="es">
 
@@ -274,61 +273,68 @@ nohy<!DOCTYPE html>
       <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subir Video Redondo</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      background-color: #f4f4f9;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir y Reproducir Vídeo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column;
+        }
 
-    .container {
-      text-align: center;
-    }
+        .video-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #000; /* Puedes cambiar el color del borde */
+            margin-bottom: 20px;
+        }
 
-    #videoElement {
-      width: 300px; /* Tamaño mediano */
-      height: 300px;
-      border-radius: 50%; /* Forma circular */
-      object-fit: cover; /* Ajuste del contenido */
-      border: 5px solid #000; /* Borde negro */
-      display: none; /* Ocultar hasta que se cargue el video */
-    }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    #videoInput {
-      margin-bottom: 20px;
-      padding: 10px;
-    }
-  </style>
+        input[type="file"] {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <input type="file" id="videoInput" accept="video/*" />
-    <video id="videoElement" controls autoplay muted></video>
-  </div>
+    <div class="video-container">
+        <video id="videoPlayer" controls>
+            <source id="videoSource" src="" type="">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+    </div>
 
-  <script>
-    const videoInput = document.getElementById("videoInput");
-    const videoElement = document.getElementById("videoElement");
+    <input type="file" id="fileInput" accept="video/*">
 
-    // Manejar el evento de carga de video
-    videoInput.addEventListener("change", event => {
-      const file = event.target.files[0];
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoSource = document.getElementById('videoSource');
 
-      if (file) {
-        const videoURL = URL.createObjectURL(file);
-        videoElement.src = videoURL;
-        videoElement.style.display = "block"; // Mostrar el video
-      }
-    });
-  </script>
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                videoSource.src = fileURL;
+                videoSource.type = file.type;
+                videoPlayer.load();  // Carga el vídeo
+                videoPlayer.play();  // Reproduce el vídeo inmediatamente
+            }
+        });
+    </script>
 </body>
 </html>
-      
-                 
