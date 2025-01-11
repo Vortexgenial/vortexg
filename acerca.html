@@ -98,3 +98,162 @@
     </script>
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum Personalizado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .album {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .file-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            width: 180px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .file-card img, 
+        .file-card video,
+        .file-card audio {
+            width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+        }
+        .file-card p {
+            margin: 10px 0 0;
+            word-wrap: break-word;
+        }
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #uploadBtn {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .change-name-btn {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        .change-name-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Álbum Personalizado</h1>
+    <input type="text" id="searchBar" placeholder="Buscar archivos...">
+    <input type="file" id="fileInput" multiple style="margin-bottom: 20px;">
+    <button id="uploadBtn">Subir Archivos</button>
+
+    <div class="album" id="albumContainer"></div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const albumContainer = document.getElementById('albumContainer');
+        const searchBar = document.getElementById('searchBar');
+
+        // Subir y mostrar archivos
+        uploadBtn.addEventListener('click', () => {
+            const files = fileInput.files;
+            if (files.length === 0) {
+                alert('Por favor, selecciona archivos para subir.');
+                return;
+            }
+
+            Array.from(files).forEach(file => {
+                const fileCard = document.createElement('div');
+                fileCard.classList.add('file-card');
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    // Detectar el tipo de archivo y renderizar
+                    if (file.type.startsWith('image/')) {
+                        const img = document.createElement('img');
+                        img.src = reader.result;
+                        fileCard.appendChild(img);
+                    } else if (file.type.startsWith('video/')) {
+                        const video = document.createElement('video');
+                        video.src = reader.result;
+                        video.controls = true;
+                        fileCard.appendChild(video);
+                    } else if (file.type.startsWith('audio/')) {
+                        const audio = document.createElement('audio');
+                        audio.src = reader.result;
+                        audio.controls = true;
+                        fileCard.appendChild(audio);
+                    } else {
+                        const placeholder = document.createElement('div');
+                        placeholder.style.height = '150px';
+                        placeholder.style.display = 'flex';
+                        placeholder.style.alignItems = 'center';
+                        placeholder.style.justifyContent = 'center';
+                        placeholder.style.backgroundColor = '#f0f0f0';
+                        placeholder.textContent = 'Archivo no soportado';
+                        fileCard.appendChild(placeholder);
+                    }
+
+                    const fileNameParagraph = document.createElement('p');
+                    const fileName = file.name;
+                    fileNameParagraph.textContent = fileName;
+                    fileCard.setAttribute('data-name', fileName.toLowerCase());
+                    fileCard.appendChild(fileNameParagraph);
+
+                    // Botón para cambiar el nombre
+                    const changeNameBtn = document.createElement('button');
+                    changeNameBtn.classList.add('change-name-btn');
+                    changeNameBtn.textContent = 'Cambiar Nombre';
+                    changeNameBtn.addEventListener('click', () => {
+                        const newName = prompt('Ingresa un nuevo nombre para el archivo:', fileName);
+                        if (newName) {
+                            fileNameParagraph.textContent = newName;
+                            fileCard.setAttribute('data-name', newName.toLowerCase());
+                        }
+                    });
+                    fileCard.appendChild(changeNameBtn);
+
+                    albumContainer.appendChild(fileCard);
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+            fileInput.value = ''; // Limpiar el input
+        });
+
+        // Filtrar archivos mediante la barra de búsqueda
+        searchBar.addEventListener('input', () => {
+            const query = searchBar.value.toLowerCase();
+            const fileCards = albumContainer.querySelectorAll('.file-card');
+            fileCards.forEach(card => {
+                const fileName = card.getAttribute('data-name');
+                card.style.display = fileName.includes(query) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
