@@ -269,6 +269,66 @@ nohy<!DOCTYPE html>
 </body>
 
 </html>
-      
+
+            
+      <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir Video Redondo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #videoElement {
+      width: 300px; /* Tamaño mediano */
+      height: 300px;
+      border-radius: 50%; /* Forma circular */
+      object-fit: cover; /* Ajuste del contenido */
+      border: 5px solid #000; /* Borde negro */
+      display: none; /* Ocultar hasta que se cargue el video */
+    }
+
+    #videoInput {
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="file" id="videoInput" accept="video/*" />
+    <video id="videoElement" controls autoplay muted></video>
+  </div>
+
+  <script>
+    const videoInput = document.getElementById("videoInput");
+    const videoElement = document.getElementById("videoElement");
+
+    // Manejar el evento de carga de video
+    videoInput.addEventListener("change", event => {
+      const file = event.target.files[0];
+
+      if (file) {
+        const videoURL = URL.createObjectURL(file);
+        videoElement.src = videoURL;
+        videoElement.style.display = "block"; // Mostrar el video
+      }
+    });
+  </script>
+</body>
+</html>
       
                  
