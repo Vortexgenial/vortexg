@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Barra de Búsqueda</title>
+  <h3/>for Link add one video in Html and comentarios in time real for api remoto back end 
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            margin: 20px;
+
+        }
+
+        input[type="text"] {
+
+            width: 300px;
+
+            padding: 10px;
+
+            margin-bottom: 20px;
+
+        }
+
+        ul {
+
+            list-style-type: none;
+
+            padding: 0;
+
+        }
+
+        li {
+
+            padding: 8px;
+
+            background-color: #f4f4f4;
+
+            margin: 5px 0;
+
+            border: 1px solid #ddd;
+
+        }
+
+        li a {
+
+            text-decoration: none;
+
+            color: #333;
+
+        }
+
+        li a:hover {
+
+            text-decoration: underline;
+
+        }
+
+        .hidden {
+
+            display: none;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Vpodcasts & tematicas Views</h1>
+
+    <input type="text" id="searchInput" placeholder="Buscar por nombre o ID...">
+
+    <ul id="linkList">
+
+        <li id="link1"><a href="https://www.google.com">vpodcast Views</a></li>
+
+        <li id="link2"><a href="https://www.google.com">Vortex company</a></li>
+
+        <li id="link3"><a 
+href="https://127.0.0.1:3000">Llamada Wifi 3317739762</a></li>
+
+        <li id="link4"><a href="https://www.youtube.com">Tiburon Cop$</a></li>
+
+        <li id="link5"><a 
+href="https://vortexgenial.github.io/vortexg/">vortexgenial@gmail.com</a></li>
+
+    </ul>
+
+    <script>
+
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+
+            const searchTerm = this.value.toLowerCase();
+
+            const links = document.querySelectorAll('#linkList li');
+
+            links.forEach(link => {
+
+                const linkText = link.textContent.toLowerCase();
+
+                const linkId = link.id.toLowerCase();
+
+                if (linkText.includes(searchTerm) || linkId.includes(searchTerm)) {
+
+                    link.classList.remove('hidden');
+
+                } else {
+
+                    link.classList.add('hidden');
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
