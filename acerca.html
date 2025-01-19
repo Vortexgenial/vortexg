@@ -59,110 +59,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barra de Búsqueda</title>
-<style>
-
+    <title>Buscador Estilo Google</title>
+    <style>
         body {
-            font-size: 76px;
-
+            font-sinze: 64
             font-family: Arial, sans-serif;
-
-            margin: 60px;
-
-        } 
-
-         input[type="text"] {
-
-            width: 300px;
-
-            padding: 30px;
-
-            margin-bottom: 30px;
-
-        }
-
-        ul {
-
-            list-style-type: none;
-
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
             padding: 0;
-
         }
 
-        li {
-
-            padding: 8px;
-
-            background-color: #;
-
-            margin: 5px 0;
-
-            border: 0px solid #;
-
-        }
-
-        li a {
-
-            text-decoration: none;
-
+        h1 {
+            margin-top: 50px;
             color: #333;
-
         }
 
-        li a:hover {
-
-            text-decoration: underline;
-
+        .search-container {
+            position: relative;
+            margin: 20px auto;
+            width: 50%;
         }
 
-        .hidden {
-
-            display: none;
-
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-</style>
 
-</head>
+        .suggestions {
+            position: absolute;
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            z-index: 1000;
+            max-height: 150px;
+            overflow-y: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-<body>
+        .suggestions a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
 
-    <h4> Vpodcasts Views</h4>
-
-    <input type="text" id="searchInput" placeholder="Buscar por nombre o ID...">
-
-    <ul id="linkList">
-        <li id="link3"><a href="https://vortexgenial.github.io/vortexg/acerca2.html">👽 </a></li>
-        
+        .suggestions a:hover {
+            background: #f0f0f0;
+        }
+    </style>
     <script>
+        const links = [
+            { text: "", url: ". " },
+            { text: " ", url: "https://www.facebook.com" },
+            { text: "Twitter", url: "https://www.twitter.com" },
+            { text: "Wikipedia", url: "https://www.wikipedia.org" },
+            { text: "GitHub", url: "https://www.github.com" }
+        ];
 
-        document.getElementById('searchInput').addEventListener('keyup', function() {
+        function mostrarSugerencias() {
+            const input = document.getElementById("searchBar").value.toLowerCase();
+            const suggestionsContainer = document.getElementById("suggestions");
+            suggestionsContainer.innerHTML = "";
 
-            const searchTerm = this.value.toLowerCase();
+            if (input) {
+                const filteredLinks = links.filter(link =>
+                    link.text.toLowerCase().includes(input)
+                );
 
-            const links = document.querySelectorAll('#linkList li');
+                filteredLinks.forEach(link => {
+                    const anchor = document.createElement("a");
+                    anchor.href = link.url;
+                    anchor.target = "_blank";
+                    anchor.textContent = link.text;
+                    suggestionsContainer.appendChild(anchor);
+                });
+            }
+        }
 
-            links.forEach(link => {
-
-                const linkText = link.textContent.toLowerCase();
-
-                const linkId = link.id.toLowerCase();
-
-                if (linkText.includes(searchTerm) || linkId.includes(searchTerm)) {
-
-                    link.classList.remove('hidden');
-
-                } else {
-
-                    link.classList.add('hidden');
-
-                }
-
-            });
-
-        });
-
+        function buscar() {
+            const query = document.getElementById("searchBar").value.trim();
+            if (query) {
+                const url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                window.location.href = url;
+            }
+        }
     </script>
-
+</head>
+<body>
+    <h1>Mi Buscador</h1>
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchBar" 
+            class="search-bar" 
+            placeholder="Escribe algo para buscar..." 
+            oninput="mostrarSugerencias()" 
+        />
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+    <button onclick="buscar()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+        Buscar
+    </button>
 </body>
-
 </html>
+
+    
