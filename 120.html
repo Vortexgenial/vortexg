@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vcall wifi michu pishw</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #ffc107;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="boton" onclick="accionBoton()">Clik 2 veces para llamar. Llamada entrante del id privado </button>
+
+    <audio id="sonido">
+        <source src="alerta.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script>
+        // Lista de colores para cambiar en cada clic
+        const colores = ["#ff69B4", "#6f42c1", "#17a2b8", "#ff0000"];
+        let indiceColor = 0;
+
+        function accionBoton() {
+            // Reproducir el sonido
+            const sonido = document.getElementById('sonido');
+            sonido.currentTime = 0;  // Reinicia el audio para poder reproducirlo varias veces seguidas
+            sonido.play();
+
+            // Cambiar color del botón
+            const boton = document.getElementById('boton');
+            boton.style.backgroundColor = colores[indiceColor];
+
+            // Avanzar al siguiente color en la lista
+            indiceColor = (indiceColor + 1) % colores.length;
+        }
+    </script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vcall wi-fi👽</title>
+    <link rel="stylesheet" href="Styles.css">
+    
+    <style>
+        /* Modo claro por defecto */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Cambiar negritas a color negro en modo claro */
+        b {
+            color: black;
+        }
+
+        /* Modo oscuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Cambiar negritas a color blanco en modo oscuro */
+        body.dark-mode b {
+            color: white;
+        }
+
+        /* Botón para alternar entre modos */
+        .toggle-button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <p><b></b></p>
+    <button class="toggle-button" onclick="toggleDarkMode()">Alternar Modo Oscuro</button>
+
+    <script>
+        // Función para alternar el modo oscuro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videollamada And subtitle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .video-container {
+            display: flex;
+            flex-direction:
+            row-reverse;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 45%;
+        }
+        video {
+            width: 100%;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #000;
+        }
+        .subtitles {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #localVideo{
+            transform: scaleX(-1);
+        }
+
+        <title>Cámara y Micrófono</title>
+
+</head>
+
+<body>
+    </style>
+</head>
+<body>
+    <h1>Videollamada And Subtítulos</h1>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <video id="localVideo" autoplay playsinline></video>
+            <div class="subtitles" id="localSubtitles">Subtítulos locales aquí...</div>
+        </div>
+        <div class="video-wrapper">
+            <video id="remoteVideo" autoplay playsinline></video>
+            <div class="subtitles" id="remoteSubtitles">Subtítulos remotos aquí...</div>
+        </div>
+    </div>
+    <button id="startCall">Iniciar Llamada</button>
+    <button id="endCall">Terminar Llamada</button>
+
+    <script>
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const localSubtitles = document.getElementById('localSubtitles');
+        const remoteSubtitles = document.getElementById('remoteSubtitles');
+        const startCallBtn = document.getElementById('startCall');
+        const endCallBtn = document.getElementById('endCall');
+
+        let localStream;
+        let remoteStream;
+        let peerConnection;
+
+        const config = {
+            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+        };
+
+        // Capturar cámara local
+        async function startLocalStream() {
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                localVideo.srcObject = localStream;
+                startSpeechRecognition(localSubtitles);
+            } catch (error) {
+                console.error('Error al acceder a la cámara:', error);
+            }
+        }
+
+        // Iniciar la llamada WebRTC
+        async function startCall() {
+            peerConnection = new RTCPeerConnection(config);
+            remoteStream = new MediaStream();
+            remoteVideo.srcObject = remoteStream;
+
+            // Agregar la transmisión local a la conexión
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.ontrack = (event) => {
+                remoteStream.addTrack(event.track);
+                startSpeechRecognition(remoteSubtitles);
+            };
+
+            peerConnection.onicecandidate = (event) => {
+                if (event.candidate) {
+                    console.log('Nuevo ICE Candidate:', event.candidate);
+                }
+            };
+
+            try {
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
+                console.log('Oferta SDP enviada:', offer);
+
+                // Simular señalización local para pruebas
+                await simulateSignaling(offer);
+            } catch (error) {
+                console.error('Error al crear la oferta:', error);
+            }
+        }
+
+        // Simulación de señalización (para pruebas locales)
+        async function simulateSignaling(offer) {
+            peerConnectionRemote = new RTCPeerConnection(config);
+            localStream.getTracks().forEach(track => peerConnectionRemote.addTrack(track, localStream));
+
+            peerConnectionRemote.ontrack = (event) => {
+                remoteStream.addTrack(event.track);
+            };
+
+            peerConnectionRemote.onicecandidate = (event) => {
+                if (event.candidate) {
+                    peerConnection.addIceCandidate(event.candidate);
+                }
+            };
+
+            await peerConnectionRemote.setRemoteDescription(offer);
+            const answer = await peerConnectionRemote.createAnswer();
+            await peerConnectionRemote.setLocalDescription(answer);
+            await peerConnection.setRemoteDescription(answer);
+            console.log('Respuesta SDP recibida:', answer);
+        }
+
+        // Cerrar la llamada
+        function endCall() {
+            if (peerConnection) {
+                peerConnection.close();
+                peerConnection = null;
+            }
+            if (peerConnectionRemote) {
+                peerConnectionRemote.close();
+                peerConnectionRemote = null;
+            }
+            localVideo.srcObject = null;
+            remoteVideo.srcObject = null;
+            console.log('Llamada terminada');
+        }
+
+        // Iniciar reconocimiento de voz para subtítulos
+        function startSpeechRecognition(subtitleElement) {
+            if (!('webkitSpeechRecognition' in window)) {
+                subtitleElement.textContent = 'Tu navegador no soporta reconocimiento de voz.';
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'es-ES';
+
+            recognition.onresult = (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                subtitleElement.textContent = transcript;
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Error en reconocimiento de voz:', event.error);
+                subtitleElement.textContent = 'Error en subtítulos';
+            };
+
+            recognition.start();
+        }
+
+        // Event Listeners
+        startCallBtn.addEventListener('click', async () => {
+            await startLocalStream();
+            await startCall();
+        });
+
+        endCallBtn.addEventListener('click', endCall);
+
+        // iniciar servers con HTTPS para escuchar ofertas
+
+const express = require('express');
+
+const HTTP_PORT = 3000; // Puerto del servidor
+const app = express();
+
+// Middleware para parsear JSON
+app.use(express.json());
+
+// Ruta de prueba
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando en http://localhost:3000');
+});
+
+// Iniciar servidor
+app.listen(HTTP_PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${HTTP_PORT}`);
+});
+
+        
+    </script>
+</body>
+</html>       
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videollamada And subtitle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .video-container {
+            display: flex;
+            flex-direction:
+            row-reverse;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 45%;
+        }
+        video {
+            width: 100%;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #000;
+        }
+        .subtitles {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #localVideo{
+            transform: scaleX(-1);
+        }
+
+        <title>Cámara y Micrófono</title>
+
+</head>
+
+<body>
+    </style>
+</head>
+<body>
+    <h1>Videollamada And Subtítulos</h1>
+    <div class="video-container">
+        <div class="video-wrapper">
+            <video id="localVideo" autoplay playsinline></video>
+            <div class="subtitles" id="localSubtitles">Subtítulos locales aquí...</div>
+        </div>
+        <div class="video-wrapper">
+            <video id="remoteVideo" autoplay playsinline></video>
+            <div class="subtitles" id="remoteSubtitles">Subtítulos remotos aquí...</div>
+        </div>
+    </div>
+    <button id="startCall">Iniciar Llamada</button>
+    <button id="endCall">Terminar Llamada</button>
+
+    <script>
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const localSubtitles = document.getElementById('localSubtitles');
+        const remoteSubtitles = document.getElementById('remoteSubtitles');
+        const startCallBtn = document.getElementById('startCall');
+        const endCallBtn = document.getElementById('endCall');
+
+        let localStream;
+        let remoteStream;
+        let peerConnection;
+
+        const config = {
+            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+        };
+
+        // Capturar cámara local
+        async function startLocalStream() {
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                localVideo.srcObject = localStream;
+                startSpeechRecognition(localSubtitles);
+            } catch (error) {
+                console.error('Error al acceder a la cámara:', error);
+            }
+        }
+
+        // Iniciar la llamada WebRTC
+        async function startCall() {
+            peerConnection = new RTCPeerConnection(config);
+            remoteStream = new MediaStream();
+            remoteVideo.srcObject = remoteStream;
+
+            // Agregar la transmisión local a la conexión
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.ontrack = (event) => {
+                remoteStream.addTrack(event.track);
+                startSpeechRecognition(remoteSubtitles);
+            };
+
+            peerConnection.onicecandidate = (event) => {
+                if (event.candidate) {
+                    console.log('Nuevo ICE Candidate:', event.candidate);
+                }
+            };
+
+            try {
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
+                console.log('Oferta SDP enviada:', offer);
+
+                // Simular señalización local para pruebas
+                await simulateSignaling(offer);
+            } catch (error) {
+                console.error('Error al crear la oferta:', error);
+            }
+        }
+
+        // Simulación de señalización (para pruebas locales)
+        async function simulateSignaling(offer) {
+            peerConnectionRemote = new RTCPeerConnection(config);
+            localStream.getTracks().forEach(track => peerConnectionRemote.addTrack(track, localStream));
+
+            peerConnectionRemote.ontrack = (event) => {
+                remoteStream.addTrack(event.track);
+            };
+
+            peerConnectionRemote.onicecandidate = (event) => {
+                if (event.candidate) {
+                    peerConnection.addIceCandidate(event.candidate);
+                }
+            };
+
+            await peerConnectionRemote.setRemoteDescription(offer);
+            const answer = await peerConnectionRemote.createAnswer();
+            await peerConnectionRemote.setLocalDescription(answer);
+            await peerConnection.setRemoteDescription(answer);
+            console.log('Respuesta SDP recibida:', answer);
+        }
+
+        // Cerrar la llamada
+        function endCall() {
+            if (peerConnection) {
+                peerConnection.close();
+                peerConnection = null;
+            }
+            if (peerConnectionRemote) {
+                peerConnectionRemote.close();
+                peerConnectionRemote = null;
+            }
+            localVideo.srcObject = null;
+            remoteVideo.srcObject = null;
+            console.log('Llamada terminada');
+        }
+
+        // Iniciar reconocimiento de voz para subtítulos
+        function startSpeechRecognition(subtitleElement) {
+            if (!('webkitSpeechRecognition' in window)) {
+                subtitleElement.textContent = 'Tu navegador no soporta reconocimiento de voz.';
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'es-ES';
+
+            recognition.onresult = (event) => {
+                let transcript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                subtitleElement.textContent = transcript;
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Error en reconocimiento de voz:', event.error);
+                subtitleElement.textContent = 'Error en subtítulos';
+            };
+
+            recognition.start();
+        }
+
+        // Event Listeners
+        startCallBtn.addEventListener('click', async () => {
+            await startLocalStream();
+            await startCall();
+        });
+
+        endCallBtn.addEventListener('click', endCall);
+
+        // iniciar servers con HTTPS para escuchar ofertas
+
+const express = require('express');
+
+const HTTP_PORT = 3000; // Puerto del servidor
+const app = express();
+
+// Middleware para parsear JSON
+app.use(express.json());
+
+// Ruta de prueba
+app.get('/', (req, res) => {
+    res.send('Servidor funcionando en http://localhost:3000');
+});
+
+// Iniciar servidor
+app.listen(HTTP_PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${HTTP_PORT}`);
+});
+
+        
+    </script>
+</body>
+</html>       
