@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👽</title>
+    <style>
+        /* Estilos para el cuerpo en modo claro */
+        body {
+            font-size: 26px;
+            font-family: Arial, sans-serif;
+            background-color: #fdd1e5;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Estilos para el cuerpo en modo oscuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+
+        .config-button {
+            font-size: 26px;
+            padding: 44px 44px;
+            cursor: pointer;
+            background-color: #fdd1e5;
+            color: white;
+            border: none;
+            border-radius: 38px;
+            margin-bottom: 38px;
+        }
+
+        .config-panel {
+            font-size: 38px;                                           
+            display: none;
+            border: 1px solid #121212;
+            padding: 38px ;
+            border-radius: 38px;
+            background-color: #121212;
+        }
+
+        .config-panel.active {
+            display: block;
+        }
+
+        .config-option {
+            margin-bottom: 18px;
+        }
+
+        /* Foto de perfil redonda */
+        #profile-pic {
+            display: block;
+            margin-top: 26px;
+            width: 150px;
+            height: 150px;
+            border-radius: 60%;
+            object-fit: cover;
+        }
+           button {
+               transform: scale(1.7); 
+
+
+
+    <button class="config-button" onclick="toggleConfigPanel()"> 👽</button>
+
+    <div class="config-panel" id="configPanel">
+                 button { transform: scale(1.7); 
+        <div class="config-option">
+            <label for="profilePicInput">Subir foto de perfil:</label>
+            <input type="file" id="profilePicInput" accept="image/*" onchange="loadProfilePic(event)">
+            <img id="profile-pic" src="" alt="Foto de perfil" hidden>
+        </div>
+
+        <div class="config-option">
+            <label for="darkModeToggle">Modo oscuro:</label>
+            <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+        </div>
+
+        <form action="https://vortexgenial.github.io/vortexg/vortex.html" method="post">
+
+        <button type="submit">Cerrar Secion🚀</button>
+         </div>
+    </style>
+</head>
+<body> 
+
+       <button class="config-button" onclick="toggleConfigPanel()"> 👽</button>
+
+    <div class="config-panel" id="configPanel">
+                
+        <div class="config-option">
+            <label for="profilePicInput">Subir foto de perfil:</label>
+            <input type="file" id="profilePicInput" accept="image/*" onchange="loadProfilePic(event)">
+            <img id="profile-pic" src="" alt="Foto de perfil" hidden>
+        </div>
+
+        <div class="config-option">
+            <label for="darkModeToggle">Modo oscuro:</label>
+            <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+        </div>
+
+        <form action="https://vortexgenial.github.io/vortexg/vortex.html" method="post">
+
+        <button type="submit">Cerrar Secion🚀</button>
+        </div>
+    <script>
+        // Mostrar/ocultar el panel de configuración
+        function toggleConfigPanel() {
+            const panel = document.getElementById('configPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Cambiar entre modo oscuro y claro
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // Cargar la imagen de perfil seleccionada y mostrarla
+        function loadProfilePic(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = document.getElementById('profile-pic');
+                img.src = reader.result;
+                img.hidden = false; // Mostrar la imagen después de cargarla
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+
+</body>
+</html>
+
+
+<h3>Nohy</h3><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i Vortex👽</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                
+                
+                <li><a href="index.html">i Vortex👽</a></li>
+                
+                <li><a href="acerca.html">Vpodcast👽</a></li>
+                
+                <li><a href="vortex.html">Vortex Genial 💺</a></li>
+
+                <li><a href="  ">the Vchat 🤎</a></li> 
+
+                <li><a href="127.html">By Michu pishw live camera 🍇</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            
+        
+                
+            
+                
+            <html lang="es">
+            
+            <head>
+            
+                <meta charset="UTF-8">
+            
+                <title>Iniciar Sesión</title>
+            
+            </head>
+            
+            <body>
+            
+                <h1>WELCOM a VORTTEX</h1>
+                     
+            
+                </form>
+            
+                <c:if test="${not empty error}">
+            
+                    <p style="color:red;">(PARCER@)CLICK UNDER IN NAVE DEL ALIEN </p>
+                    
+                </c:if>
+            
+            </body>
+            
+            </html>
+   
+
+  <!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contacto for wifi</title>
+    
+     <!-- Incluye Font Awesome para los iconos -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        
+    body {
+            display: center;
+        
+            justify-content: center;
+        
+            align-items: center;
+        
+            height: 101vh;
+        
+            width: 229vw;
+        
+            background-color: #282c34;
+        }
+
+        .icon {
+            font-size: 100px;
+            
+            color: #270833;
+            
+            cursor: pointer;
+            
+            transition: color 0.3s;
+        }
+
+        .icon:hover {
+            
+            color: #ffffff;
+        }
+
+    </style>
+    
+</head>
+    
+<body>
+    <h3>Vpodcast in live next subtítle special 👽📲😊🌏</h3>
+
+         <i class="fas fa-rocket icon" onclick="openWhatsApp()"></i>
+
+    <h3> 👍🏆</h3>
+    <h3> nexts vortex@s Meet</h3>
+    
+
+    <script>
+
+        function openWhatsApp() {
+
+            var phoneNumber = '3322932322'; // Reemplaza con el número de teléfono del contacto
+
+            var url = 'https://wa.me/' + phoneNumber;
+
+            window.open(url, '_blank');
+
+        }
+
+    </script>
+</style>
+</body>
+
+</html>
+            
+
+    
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>...</title>
+    <link rel="stylesheet" href="Styles.css">
+    
+    <style>
+              
+        body {
+
+              color: #270833;
+
+              text-decoration: none;
+
+              font-family: Arial, sans-serif;
+
+              margin: 10px;
+
+    </style>
+
+</head>
+
+<body>
+
+ 
+
+            
+
+       
+            
+
+    
+
+    </script>
+
+</body>
+
+</html>
+      
+      
+                 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>voortex</title>
+  <style>
+    body {
+      display: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 300vh;
+      margin: 300px;
+      background-color: #fdd1e5;
+      font-family: Arial, sans-serif;
+    }
+
+    .upload-container {
+      text-align: center;
+    }
+
+    .video-container {
+      width: 200px;
+      height: 200px;
+      border: 5px solid #fdd1e5; /* Color del marco */
+      border-radius: 50%; /* Hace el marco redondo */
+      overflow: hidden; /* Esconde los bordes sobrantes */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+      margin-top: 20px;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ajusta el video al contenedor */
+    }
+
+    input[type="file"] {
+      margin-top: 38px;
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>GIF</h1>
+    <input type="file" id="videoInput" accept="video/*">
+    <div class="video-container" id="videoContainer">
+      <video id="videoPlayer" controls></video>
+    </div>
+  </div>
+
+  <script>
+    const videoInput = document.getElementById('videoInput');
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    videoInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const fileURL = URL.createObjectURL(file);
+        videoPlayer.src = fileURL;
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+                
